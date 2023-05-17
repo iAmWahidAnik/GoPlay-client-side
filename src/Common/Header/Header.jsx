@@ -16,7 +16,10 @@ const Header = () => {
                         <li><a>Blogs</a></li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">GoPlay</a>
+                <div className='flex items-center'>
+                    <img className='w-10' src="https://cdn-icons-png.flaticon.com/512/1083/1083808.png" alt="" />
+                    <a className="btn btn-ghost normal-case text-xl">GoPlay</a>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

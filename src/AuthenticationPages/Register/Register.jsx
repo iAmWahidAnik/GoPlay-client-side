@@ -1,11 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { AuthenticationContext } from '../../AuthenticationProvider/AuthenticationProvider';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Register = () => {
-    const {register, updatePro} = useContext(AuthenticationContext);
+    const { register, updatePro } = useContext(AuthenticationContext);
     const [error, setError] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location?.state?.from?.pathname || '/';
 
     const handleRegister = e => {
         e.preventDefault();
@@ -15,26 +18,27 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        setError('');
         register(email, password)
-        .then(res => {
-            const user = res.user;
-            updatePro(name, photo)
-            user.displayName = name;
-            user.photoURL = photo;
-            form.reset();
-            setError('')
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'User has been created successfully',
-                showConfirmButton: false,
-                timer: 1500
+            .then(res => {
+                const user = res.user;
+                updatePro(name, photo)
+                user.displayName = name;
+                user.photoURL = photo;
+                form.reset();
+                navigate(from)
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'User has been created successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             })
-        })
-        .catch(error => {
-            const message = error.message;
-            setError(message)
-        })
+            .catch(error => {
+                const message = error.message;
+                setError(message)
+            })
     }
     return (
         <div className='my-20'>

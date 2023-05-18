@@ -2,11 +2,14 @@ import React, { useContext, useState } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { AuthenticationContext } from '../../AuthenticationProvider/AuthenticationProvider';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const { login } = useContext(AuthenticationContext);
-    const [error, setError] = useState('')
+    const [error, setError] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location?.state?.from?.pathname || '/';
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
@@ -20,6 +23,7 @@ const Login = () => {
                 const user = res.user;
                 console.log(user);
                 form.reset();
+                navigate(from)
                 Swal.fire({
                     position: 'center',
                     icon: 'success',

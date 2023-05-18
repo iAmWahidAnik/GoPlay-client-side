@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
+import { AuthenticationContext } from '../../AuthenticationProvider/AuthenticationProvider';
 
 const AddAToy = () => {
+    const { user } = useContext(AuthenticationContext)
     const [subCategory, setSubCategory] = useState('');
 
     const handleAddToy = e => {
@@ -30,6 +32,7 @@ const AddAToy = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
+                    form.reset();
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
@@ -38,6 +41,13 @@ const AddAToy = () => {
                         timer: 1500
                     })
                 }
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error?.message,
+                })
             })
     }
     return (
@@ -65,7 +75,7 @@ const AddAToy = () => {
                         <label className="label">
                             <span className="label-text">Seller Name</span>
                         </label>
-                        <input type="text" name='sname' placeholder="seller name" className="input w-full" />
+                        <input type="text" name='sname' defaultValue={user?.displayName} placeholder="seller name" className="input w-full" />
                     </div>
                 </div>
                 {/* third row  */}
@@ -74,14 +84,14 @@ const AddAToy = () => {
                         <label className="label">
                             <span className="label-text">Seller Email</span>
                         </label>
-                        <input type="email" name='email' placeholder="email" className="input w-full" />
+                        <input type="email" name='email' readOnly value={user?.email} placeholder="email" className="input w-full" />
                     </div>
                     <div className='w-full'>
                         {/* select options */}
                         <label className="label">
                             <span className="label-text">Sub Category</span>
                         </label>
-                        <select onChange={(e) => setSubCategory(e.target.value)} className="select w-full">
+                        <select required onChange={(e) => setSubCategory(e.target.value)} className="select w-full">
                             <option disabled selected>Pick your sub-category</option>
                             <option value='car'>Car</option>
                             <option value='truck'>Truck</option>

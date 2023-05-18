@@ -1,9 +1,26 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthenticationContext } from '../../AuthenticationProvider/AuthenticationProvider';
+import Swal from 'sweetalert2';
 
 const Header = () => {
-    const { user } = useContext(AuthenticationContext);
+    const { user, logout } = useContext(AuthenticationContext);
+    console.log(user);
+
+    const handleLogout = () => {
+        logout()
+            .then(res => {
+                console.log(res);
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'You have been successfully logged out',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+            .catch(error => { console.log(error); })
+    }
 
     return (
         <div className="navbar bg-base-100">
@@ -15,10 +32,13 @@ const Header = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/alltoys'>All Toys</Link></li>
+                        <li><Link to='blogs'>Blogs</Link></li>
+
                         {user && <>
                             <li><Link to='/mytoys'>My Toys</Link></li>
-                            <li><Link to='/addtoy'>Add A Toy</Link></li></>}
-                        <li><Link to='blogs'>Blogs</Link></li>
+                            <li><Link to='/addtoy'>Add A Toy</Link></li>
+                            <button onClick={handleLogout} className='btn btn-primary'>Logout</button></>}
+
                     </ul>
                 </div>
                 <div className='flex items-center'>
@@ -30,14 +50,23 @@ const Header = () => {
                 <ul className="menu menu-horizontal px-1">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/alltoys'>All Toys</Link></li>
+                    <li><Link to='blogs'>Blogs</Link></li>
+
                     {user && <>
                         <li><Link to='/mytoys'>My Toys</Link></li>
-                        <li><Link to='/addtoy'>Add A Toy</Link></li></>}
-                    <li><Link to='blogs'>Blogs</Link></li>
+                        <li><Link to='/addtoy'>Add A Toy</Link></li>
+                        <button onClick={handleLogout} className='btn btn-primary'>Logout</button></>}
+
                 </ul>
             </div>
             <div className="navbar-end">
-                {user ? <a className="btn">DP</a> : <Link to='/login'><button className='btn btn-primary'>Login</button></Link>}
+                {user ?
+                    <div className="avatar tooltip tooltip-left" data-tip={user?.displayName}>
+                        <div className="w-24 rounded-xl">
+                            <img src={user.photoURL} />
+                        </div>
+                    </div>
+                    : <Link to='/login'><button className='btn btn-primary'>Login</button></Link>}
             </div>
         </div>
     );

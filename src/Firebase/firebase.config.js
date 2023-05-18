@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDrqjvdbmcvPKPQZLi_YxklQo7mfs-gQNw",
-  authDomain: "goplay-f1c8c.firebaseapp.com",
-  projectId: "goplay-f1c8c",
-  storageBucket: "goplay-f1c8c.appspot.com",
-  messagingSenderId: "714119130562",
-  appId: "1:714119130562:web:4493c845d39bdc5fc4ba5b"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase

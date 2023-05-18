@@ -7,6 +7,9 @@ import ErrorElement from './ErrorElements/ErrorElement.jsx'
 import Home from './SinglePages/HomeComponents/Home/Home.jsx'
 import Login from './AuthenticationPages/Login/Login'
 import Register from './AuthenticationPages/Register/Register'
+import AllToys from './SinglePages/AllToys/AllToys'
+import AddAToy from './SinglePages/AddAToy/AddAToy'
+import MyToys from './SinglePages/MyToys/MyToys'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +28,18 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register></Register>
+      },
+      {
+        path: 'alltoys',
+        element: <AllToys></AllToys>
+      },
+      {
+        path: 'addtoy',
+        element: <AddAToy></AddAToy>
+      }, 
+      {
+        path: 'mytoys',
+        element: <MyToys></MyToys>
       }
     ]
   }

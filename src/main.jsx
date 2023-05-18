@@ -10,6 +10,7 @@ import Register from './AuthenticationPages/Register/Register'
 import AllToys from './SinglePages/AllToys/AllToys'
 import AddAToy from './SinglePages/AddAToy/AddAToy'
 import MyToys from './SinglePages/MyToys/MyToys'
+import AuthenticationProvider from './AuthenticationProvider/AuthenticationProvider'
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
       {
         path: 'addtoy',
         element: <AddAToy></AddAToy>
-      }, 
+      },
       {
         path: 'mytoys',
         element: <MyToys></MyToys>
@@ -47,6 +48,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AuthenticationProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthenticationProvider>
   </React.StrictMode>,
 )

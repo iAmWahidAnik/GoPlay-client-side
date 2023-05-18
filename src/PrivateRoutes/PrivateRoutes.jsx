@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 const PrivateRoutes = ({ children }) => {
     const { user, loading } = useContext(AuthenticationContext);
     if (loading) {
-        return <div>Loading ...</div>
+        return <button className="btn loading btn-block my-60">loading</button>
     }
     if (user) {
         return children;

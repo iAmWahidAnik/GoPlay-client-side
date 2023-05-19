@@ -3,13 +3,16 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import { AuthenticationContext } from '../../AuthenticationProvider/AuthenticationProvider';
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
-    const { login } = useContext(AuthenticationContext);
+    const { login, googleLogin } = useContext(AuthenticationContext);
+    useTitle('GoPlay - Login')
     const [error, setError] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/';
+    console.log(from);
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
@@ -37,6 +40,23 @@ const Login = () => {
                 setError(message)
             })
     }
+    const handleGoogleAuth = () => {
+        googleLogin()
+            .then(res => {
+                navigate(from)
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'You have been successfully logged in',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+            .catch(error => {
+                const message = error.message;
+                setError(message)
+            })
+    }
     return (
         <div className='my-20'>
             <div className="hero min-h-screen bg-base-200 lg:px-20">
@@ -48,29 +68,35 @@ const Login = () => {
                             loop autoplay
                         />
                     </div>
-                    <form onSubmit={handleLogin} className="p-10 shadow-lg rounded-lg bg-base-200 lg:w-1/2">
-                        <h1 className="text-5xl font-bold my-5 text-error">Login now!</h1>
-                        <p className='my-5 text-red-500'>{error}</p>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input type="email" name='email' placeholder="email" className="input input-bordered" />
+                    <div className="p-10 shadow-lg rounded-lg bg-base-200 lg:w-1/2">
+                        <form onSubmit={handleLogin}>
+                            <h1 className="text-5xl font-bold my-5 text-error">Login now!</h1>
+                            <p className='my-5 text-red-500'>{error}</p>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input type="email" name='email' placeholder="email" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input type="password" name='password' placeholder="password" className="input input-bordered" />
+                                <label className="label">
+                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                </label>
+                            </div>
+                            <div className="form-control mt-6">
+                                <input className="btn btn-error" type="submit" value="Login" />
+                            </div>
+                            <p className='my-5 text-center text-error'><small className=''>new to GoPlay? <Link className='text-primary' to='/register'>Register</Link></small></p>
+                        </form>
+                        <div className="divider">OR</div>
+                        <div className='text-center'>
+                            <button onClick={handleGoogleAuth} className='btn btn-circle btn-error'>G</button>
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
-                        </div>
-                        <div className="form-control mt-6">
-                            <input className="btn btn-error" type="submit" value="Login" />
-                        </div>
-                        <p className='my-5 text-center text-error'><small className=''>new to GoPlay? <Link className='text-primary' to='/register'>Register</Link></small></p>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

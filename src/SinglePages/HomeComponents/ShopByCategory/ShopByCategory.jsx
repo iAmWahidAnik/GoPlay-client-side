@@ -8,7 +8,7 @@ import Busses from './Busses/Busses';
 const ShopByCategory = () => {
     return (
         <div className='my-20'>
-            <Tabs>
+            <Tabs className=''>
                 <TabList>
                     <Tab>Cars</Tab>
                     <Tab>Trucks</Tab>

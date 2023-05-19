@@ -2,9 +2,11 @@ import React, { useContext, useState } from 'react';
 import { AuthenticationContext } from '../../AuthenticationProvider/AuthenticationProvider';
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
     const { register, updatePro } = useContext(AuthenticationContext);
+    useTitle('GoPlay - Register')
     const [error, setError] = useState('');
     const location = useLocation();
     const navigate = useNavigate();

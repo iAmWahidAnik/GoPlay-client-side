@@ -9,11 +9,11 @@ const Footer = () => {
                 <p>GoPlay Industries Ltd.<br />Providing reliable toys since 2023</p>
             </div>
             <div>
-                <span className="footer-title">Services</span>
-                <a className="link link-hover">Branding</a>
-                <a className="link link-hover">Shop</a>
-                <a className="link link-hover">sales</a>
-                <a className="link link-hover">Advertisement</a>
+                <span className="footer-title">Socials</span>
+                <a className="link link-hover">Facebook</a>
+                <a className="link link-hover">Instagram</a>
+                <a className="link link-hover">Twitter</a>
+                <a className="link link-hover">Google+</a>
             </div>
             <div>
                 <span className="footer-title">Company</span>
@@ -23,10 +23,10 @@ const Footer = () => {
                 <a className="link link-hover">Press kit</a>
             </div>
             <div>
-                <span className="footer-title">Legal</span>
-                <a className="link link-hover">Terms of use</a>
-                <a className="link link-hover">Privacy policy</a>
-                <a className="link link-hover">Cookie policy</a>
+                <span className="footer-title">Contact</span>
+                <a className="link link-hover">goplay@playgo.com</a>
+                <a className="link link-hover">+880 0114 455 5887</a>
+                <a className="link link-hover">247 Park Avenue</a>
             </div>
         </footer>
     );

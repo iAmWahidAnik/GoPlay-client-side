@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../hooks/useTitle';
 
 const ErrorElement = () => {
+    useTitle('GoPlay - 404 Not Found')
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: `url("https://ubiq.co/tech-blog/wp-content/uploads/2020/11/How-to-Make-a-Custom-404-Page.jpg")` }}>
             <div className="hero-overlay bg-opacity-60"></div>

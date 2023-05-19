@@ -4,8 +4,10 @@ import Gallery from '../Gallery/Gallery';
 import ShopByCategory from '../ShopByCategory/ShopByCategory';
 import UserReview from '../UserReview/UserReview';
 import FeaturedSellers from '../FeaturedSellers/FeaturedSellers';
+import useTitle from '../../../hooks/useTitle';
 
 const Home = () => {
+    useTitle('GoPlay - Home')
     return (
         <div>
             <Carousel></Carousel>

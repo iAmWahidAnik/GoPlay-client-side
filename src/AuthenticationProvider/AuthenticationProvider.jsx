@@ -19,9 +19,6 @@ const AuthenticationProvider = ({ children }) => {
     const googleLogin = () => {
         return signInWithPopup(auth, googleProvider)
     }
-    const githubLogin = () => {
-        return signInWithPopup(auth, githubProvider)
-    }
     const logout = () => {
         return signOut(auth)
     }
@@ -45,8 +42,7 @@ const AuthenticationProvider = ({ children }) => {
         loading,
         login,
         register,
-        googleLogin,
-        githubLogin,
+        googleLogin, 
         logout,
         updatePro
     }

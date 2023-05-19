@@ -12,6 +12,9 @@ import AddAToy from './SinglePages/AddAToy/AddAToy'
 import MyToys from './SinglePages/MyToys/MyToys'
 import AuthenticationProvider from './AuthenticationProvider/AuthenticationProvider'
 import PrivateRoutes from './PrivateRoutes/PrivateRoutes'
+import Blogs from './SinglePages/Blogs/Blogs'
+import SingleToy from './SinglePages/SingleToy/SingleToy'
+import UpdateAToy from './SinglePages/MyToys/UpdateAToy'
 
 const router = createBrowserRouter([
   {
@@ -33,15 +36,30 @@ const router = createBrowserRouter([
       },
       {
         path: 'alltoys',
-        element: <AllToys></AllToys>
+        element: <AllToys></AllToys>,
+        loader: () => fetch('https://go-play-server-side.vercel.app/alltoys')
+      },
+      {
+        path: 'toy/:id',
+        element: <PrivateRoutes><SingleToy></SingleToy></PrivateRoutes>,
+        loader: ({params}) => fetch(`https://go-play-server-side.vercel.app/alltoys/${params.id}`)
       },
       {
         path: 'addtoy',
         element: <PrivateRoutes><AddAToy></AddAToy></PrivateRoutes>
       },
       {
+        path: 'updateatoy/:id',
+        element: <UpdateAToy></UpdateAToy>,
+        loader: ({params}) => fetch(`https://go-play-server-side.vercel.app/alltoys/${params.id}`)
+      },
+      {
         path: 'mytoys',
-        element: <MyToys></MyToys>
+        element: <PrivateRoutes><MyToys></MyToys></PrivateRoutes>
+      },
+      {
+        path: 'blogs',
+        element: <Blogs></Blogs>
       }
     ]
   }

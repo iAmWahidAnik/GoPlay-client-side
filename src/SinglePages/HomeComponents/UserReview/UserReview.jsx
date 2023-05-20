@@ -11,7 +11,7 @@ const UserReview = () => {
         <div className='bg-violet-500 my-20 rounded-lg shadow-lg'>
             <h1 className='text-3xl py-10 text-center'>Testimonials</h1>
             <div><FaWaze className='mx-auto text-6xl text-white'></FaWaze></div>
-            <div className='flex flex-col lg:flex-row gap-10 p-10 text-center'>
+            <div className='flex flex-col lg:flex-row gap-10 p-10 text-center overflow-x-hidden'>
                 <div className='lg:w-1/2 animation' data-aos="flip-down">
                     <p className='text-white'>they are very professional, consectetur adipisicing elit. Iure molestiae nobis at fugiat voluptates nihil maxime magnam cum facere, in aspernatur fuga qui corrupti exercitationem cumque soluta quod? Perferendis, nisi.</p>
                     <div className="avatar">

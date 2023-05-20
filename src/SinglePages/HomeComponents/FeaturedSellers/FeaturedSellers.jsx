@@ -18,7 +18,7 @@ const FeaturedSellers = () => {
                     <p className='text-gray-400 leading-7'>There are many variations of passages of available but majority have suffered in some form, by humou or randomised words which don't look even.</p>
                 </div>
             </div>
-            <div className='flex flex-col lg:flex-row gap-20 w-11/12 mx-auto'>
+            <div className='flex flex-col lg:flex-row gap-20 w-11/12 mx-auto overflow-x-hidden'>
                 <div data-aos="fade-down-right" className='w-80 animation'>
                     <img className='w-80 h-96 object-cover' src="https://images.unsplash.com/photo-1585261941984-0145bb423997?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="" />
                     <div className='flex justify-between items-center my-5'>

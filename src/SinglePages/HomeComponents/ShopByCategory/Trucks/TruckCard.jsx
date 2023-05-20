@@ -19,7 +19,7 @@ const TruckCard = ({ truck }) => {
         }
     }
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-72 lg:w-80 xl:w-96 bg-base-100 shadow-xl">
             <figure><img className='h-72 w-full object-cover' src={photoLink} alt="Truck" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{productName}</h2>

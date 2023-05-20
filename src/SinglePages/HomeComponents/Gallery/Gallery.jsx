@@ -7,7 +7,7 @@ const Gallery = () => {
         AOS.init({duration: 2000})
     },[])
     return (
-        <div className='my-20'>
+        <div className='my-20 overflow-x-hidden'>
             <h1 className='text-5xl font-semibold text-center my-10'>Gallery</h1>
             <div className='flex flex-col lg:flex-row gap-2 mx-auto justify-center items-center'>
                 <img className='w-52 h-96 object-cover animation' data-aos="fade-right" src="https://images.unsplash.com/photo-1578652520385-c05f6f3b5de3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="" />
